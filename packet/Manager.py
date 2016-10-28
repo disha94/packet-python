@@ -134,3 +134,20 @@ class Manager(BaseAPI):
         params = {'include': 'facility,attachments.device'}
         data = self.call_api('storage/%s' % volume_id, params=params)
         return Volume(data, self)
+
+    def list_capacity(self, params={}):
+        data = self.call_api("capacity", params=params)
+        capacities = list()
+        for jsoned in data['capacity']:
+            capacity = Capacity(jsoned)
+            capacities.append(capacity)
+        return capacities
+
+    def check_capacity(self, facility, plan, quantity):
+        params = {
+            'facility': facility,
+            'plan': plan,
+            'quantity': quantity,
+        }
+        data = self.call_api('/capacity', type='POST', params=params)
+        return Capacity(data, self)
