@@ -142,6 +142,7 @@ class Manager(BaseAPI):
         capacities = list()
         for jsoned in data:
             print "j"+ jsoned
+            print data 
             capacity = Capacity(jsoned)
             capacities.append(capacity)
             print capacities
