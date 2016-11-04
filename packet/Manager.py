@@ -155,7 +155,7 @@ class Manager(BaseAPI):
         }
                 ]
         }
-        data = self.call_api('/capacity', type='POST', params=params)
+        data = self.call_api('capacity', type='POST', params=params)
         print data
-        print data.status_code
+        #print data.status_code
         return Capacity(data)

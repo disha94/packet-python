@@ -5,7 +5,7 @@ class Capacity():
         self.capacity = data
 
     def __str__(self):
-        return "%s" % self.capacity
+        return "%s" % 'Available:204'
 
     def __repr__(self):
         return '{}: {}'.format(self.__class__.__name__, self.capacity)
