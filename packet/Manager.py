@@ -141,8 +141,10 @@ class Manager(BaseAPI):
         data = self.call_api("capacity", params=params)
         capacities = list()
         for jsoned in data:
+            print "j"+ jsoned
             capacity = Capacity(jsoned)
             capacities.append(capacity)
+            print capacities
         return capacities
 
     def check_capacity(self, facility, plan, quantity):
