@@ -2,7 +2,7 @@
 
 class Capacity():
     def __init__(self, data):
-        self.capacity = data['capacity']
+        self.capacity = data
 
     def __str__(self):
         return "%s" % self.capacity
