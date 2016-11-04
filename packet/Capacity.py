@@ -3,7 +3,6 @@
 class Capacity():
     def __init__(self, data):
         self.capacity = data
-        print self.capacity
 
     def __str__(self):
         return "%s" % self.capacity
