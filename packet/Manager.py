@@ -140,9 +140,10 @@ class Manager(BaseAPI):
     def list_capacity(self, params={}):
         data = self.call_api("capacity", params=params)
         capacities = list()
-        for jsoned in data:
+        data = json.dumps(data)
+        for jsoned in data['capacity']:
             print "j"+ jsoned
-            print data 
+            print data
             capacity = Capacity(jsoned)
             capacities.append(capacity)
             print capacities
