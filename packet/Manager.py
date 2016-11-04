@@ -8,6 +8,7 @@ from .Facility import Facility
 from .OperatingSystem import OperatingSystem
 from .Volume import Volume
 from .Capacity import Capacity
+import json
 
 
 class Manager(BaseAPI):
@@ -139,7 +140,8 @@ class Manager(BaseAPI):
     def list_capacity(self, params={}):
         data = self.call_api("capacity", params=params)
         capacities = list()
-        for jsoned in data:
+        data_cap = json.loads(data)
+        for jsoned in data_cap['capacity']:
             capacity = Capacity(jsoned)
             capacities.append(capacity)
         return capacities
