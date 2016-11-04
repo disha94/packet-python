@@ -178,7 +178,7 @@ pg5ZW2BiJzvqz5PebGS70y/ySCNW1qQmJURK/Wc1bt9en"
         for capacity in capacities:
             str(capacity)
             repr(capacity)
-            self.assertIsInstance(capacity, packet.Capicity)
+            self.assertIsInstance(capacity, packet.Capacity)
 
     def test_check_capacity(self):
         device = self.manager.check_capacity('ewr1', 'baremetal_0',  '7')
