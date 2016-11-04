@@ -7,6 +7,7 @@ from .Project import Project
 from .Facility import Facility
 from .OperatingSystem import OperatingSystem
 from .Volume import Volume
+from .Capacity import Capacity
 
 
 class Manager(BaseAPI):
