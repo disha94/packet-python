@@ -139,8 +139,9 @@ class Manager(BaseAPI):
     def list_capacity(self, params={}):
         data = self.call_api("capacity", params=params)
         capacities = list()
+        data = json.loads(data)
         for jsoned in data['capacity']:
-            capacity = Capacity(jsoned)
+            capacity = Capacity(jsoned, self)
             capacities.append(capacity)
         return capacities
 
