@@ -8,6 +8,7 @@ from .Facility import Facility
 from .OperatingSystem import OperatingSystem
 from .Volume import Volume
 from .Capacity import Capacity
+from .Hardware_Reservation import Hardware_Reservation
 import json
 
 
@@ -72,7 +73,7 @@ class Manager(BaseAPI):
         return devices
 
     def create_device(self, project_id, hostname, plan, facility,
-                      operating_system, billing_cycle="hourly", userdata="",
+                      operating_system, billing_cycle="hourly", hardware_reservation_id=None, userdata="",
                       locked=False, features={}):
         params = {
             'hostname': hostname,
@@ -80,6 +81,7 @@ class Manager(BaseAPI):
             'plan': plan,
             'facility': facility,
             'operating_system': operating_system,
+            'hardware_reservation_id': hardware_reservation_id,
             'billing_cycle': billing_cycle,
             'userdata': userdata,
             'locked': locked,
@@ -157,3 +159,11 @@ class Manager(BaseAPI):
         }
         data = self.call_api('capacity', type='POST', params=params)
         return Capacity(data)
+
+    def list_hardware_reservations(self, project_id, params={}):
+        data = self.call_api('projects/%s/hardware-reservations' % project_id, params=params)
+        reservations = list()
+        for jsoned in data['hardware_reservations']:
+            reservation = Hardware_Reservation(jsoned, self)
+            reservations.append(reservation)
+        return reservations
